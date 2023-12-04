@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiheb Portfolio</title>
+   
+</head>
+
+<script>
+    // Store references to the favicon link element and the original href
+const faviconLink = document.querySelector('link[rel="icon"]');
+//const originalFaviconHref = faviconLink.href;
+
+// Set the path to the alternative favicon for when the page is not focused
+const alternativeFaviconPath = './images/astronaut-removebg-preview.png';
+
+// Function to change the favicon when the page loses focus
+function changeFaviconOnBlur() {
+  faviconLink.href = alternativeFaviconPath;
+}
+
+// Function to restore the original favicon when the page gains focus
+function restoreOriginalFaviconOnFocus() {
+  faviconLink.href = originalFaviconHref;
+}
+
+// Add event listeners for focus and blur events
+//window.addEventListener('blur', changeFaviconOnBlur);
+//window.addEventListener('focus', restoreOriginalFaviconOnFocus);
+
+    let originalTitle = document.title; // Store the original title
+let blurredTitle = "Galactic Wonders Await Discovery"; // Title to display when not focused
+
+// Event handler for when the user switches tabs
+function handleTabSwitch() {
+  if (!document.hasFocus()) {
+    document.title = blurredTitle;
+  } else {
+    document.title = originalTitle;
+  }
+}
+
+// Add event listeners for tab switch
+window.addEventListener("focus", handleTabSwitch);
+window.addEventListener("blur", handleTabSwitch);
+function checkScreenWidth() {
+            const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            const mobileMessage = document.getElementById('mobileMessage');
+            const myCanvas = document.getElementById('myCanvas');
+
+            if (screenWidth < 1024) {
+              window.location.href = 'ErrorMessage.html';
+            } else {
+              window.location.href = 'index.html';
+
+            }
+        }
+
+        window.addEventListener('resize', checkScreenWidth);
+</script>
+<script src="./js/index.js" type="module"></script>
+
+<body>
+  <style>
+    #mobileMessage {
+        display: none;
+    }
+
+    body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    #myCanvas {
+        display: none;
+    }
+
+    #formContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>
+
+    <audio id="audio2" autoplay loop ></audio>
+
+    <canvas id="mycanvas">
+        
+    </canvas>
+    
+
+</body>
+
+</html>
